@@ -5,7 +5,7 @@
 #include <PubSubClient.h>
 #include <time.h>
 
-//MQTT
+//MQT
 
 // Configuración del servidor MQTT
 const char* mqttServer = "broker.emqx.io"; //ESTE ES NUESTRO SERVER, DESDE EL CUAL VAMOS A ENVIAR MENSAJES
@@ -48,6 +48,16 @@ void callback(char* topic, byte* payload, unsigned int length) {
   mqttClient.publish(outboundtopic, responserssi.c_str());
 
   }
+  else if(message.startsWith("ADMIN_OPEN:")){
+    String salon = message.substring(11);
+
+    Serial.println("================================");
+    Serial.println("APERTURA MANUAL DESDE ADMIN");
+    Serial.println("Sala: " + salon);
+    Serial.println("Acceso valido");
+    Serial.println("================================");
+}
+
 }
 
 //CON ESTE SE INTENTA CONECTAR (SE INTENTA HASTA QUE LO LOGRE)
@@ -89,10 +99,16 @@ const char* ssid = "LABREDES";
 const char* password = "F0rmul4-1";
 //const char* ssid = "JhonySins";
 //const char* password = "Jhony2007";
+//const char* ssid = "HONOR X7c";
+//const char* password = "1109666231";
+//const char* ssid = "EL MAGO";
+//const char* password = "evolucion10";
+//const char* ssid = "DATOS";
+//const char* password = "12345678";
 
 
 //Capa de aplicación
-String BASE_URL = "http://192.168.130.43:8000/";
+String BASE_URL = "http://192.168.130.42:8000/";
 
 
 //Tomar un grupo usando Nyquist
