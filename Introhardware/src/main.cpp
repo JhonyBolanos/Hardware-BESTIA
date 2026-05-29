@@ -108,7 +108,7 @@ const char* password = "F0rmul4-1";
 
 
 //Capa de aplicación
-String BASE_URL = "http://192.168.130.42:8000/";
+String BASE_URL = "http://192.168.130.32:8000/";
 
 
 //Tomar un grupo usando Nyquist
@@ -163,6 +163,7 @@ String takeSingleSample(String clave){
 
   String expectedKey = "1234"; // simulada
   String espacio = "Salon101";
+  String esp32_serial = "ESP-A1";
 
   bool accesoValido = (clave == expectedKey);
 
@@ -170,6 +171,7 @@ String takeSingleSample(String clave){
   sample["acceso"] = accesoValido ? "valido" : "invalido";
   sample["timestamp"] = long(now);
   sample["espacio"] = espacio;
+  sample["esp32_serial"] = esp32_serial;
 
   return JSON.stringify(sample);
 }
